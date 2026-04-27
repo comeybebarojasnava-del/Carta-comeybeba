@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Come y Beba - Digital Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html{background:#080808;}
+body{background:#080808;color:#f5f0e8;font-family:'Lato',Arial,sans-serif;-webkit-text-size-adjust:100%;font-size:16px;}
+.header{background:linear-gradient(175deg,#1d1100 0%,#100b00 55%,#080808 100%);padding:34px 22px 22px;border-bottom:1px solid rgba(212,168,83,0.13);text-align:center;position:relative;overflow:hidden;}
+.ring{position:absolute;border-radius:50%;pointer-events:none;}
+.tagline{color:#d4a853;font-size:10px;letter-spacing:.35em;margin-bottom:7px;font-weight:300;text-transform:uppercase;}
+.bar-name{font-family:'Playfair Display',Georgia,serif;font-size:42px;font-weight:700;color:#f5f0e8;letter-spacing:.07em;line-height:1;}
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,#d4a853,transparent);width:68px;margin:10px auto;}
+.address{color:#4b5563;font-size:11px;letter-spacing:.04em;margin-bottom:18px;line-height:1.8;}
+.address a{color:#6b7280;text-decoration:none;}
+.lang-wrap{display:flex;justify-content:center;margin-bottom:18px;}
+.lang-btn{padding:7px 22px;font-size:12px;font-weight:700;letter-spacing:.1em;border:1px solid rgba(212,168,83,.33);cursor:pointer;font-family:'Lato',Arial,sans-serif;background:transparent;color:#d4a853;transition:all .15s;-webkit-appearance:none;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;}
+.lang-btn.active{background:#d4a853;color:#0a0a0a;}
+.lang-btn:first-child{border-radius:4px 0 0 4px;}
+.lang-btn:last-child{border-radius:0 4px 4px 0;}
+.wifi-card{background:linear-gradient(135deg,#1c1300,#0e0d00);border:1px solid rgba(212,168,83,.2);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:13px;text-align:left;}
+.wifi-icon{width:32px;height:32px;background:#d4a85322;border:1px solid #d4a85344;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#d4a853;font-weight:700;flex-shrink:0;}
+.wifi-lbl{color:#d4a853;font-size:9px;font-weight:700;letter-spacing:.25em;margin-bottom:4px;text-transform:uppercase;}
+.wifi-row{color:#9ca3af;font-size:12px;line-height:1.7;}
+.wifi-key{color:rgba(212,168,83,.6);}
+.wifi-val{color:#f5f0e8;font-weight:600;}
+.menu-body{padding:4px 20px 48px;}
+.sec{margin-top:30px;}
+.sec-head{margin-bottom:8px;}
+.sec-title-row{display:flex;align-items:center;gap:9px;margin-bottom:5px;}
+.sec-bullet{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+.sec-title{font-family:'Playfair Display',Georgia,serif;font-size:17px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;}
+.sec-divider{height:1px;margin-bottom:0;}
+.sec-sub{color:#374151;font-size:10.5px;font-style:italic;margin:4px 0 0;}
+.item{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.055);}
+.item-row{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+.item-left{flex:1;min-width:0;}
+.item-name-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:3px;margin-bottom:3px;}
+.item-name{color:#f5f0e8;font-size:13.5px;font-weight:600;font-family:'Playfair Display',Georgia,serif;letter-spacing:.01em;}
+.item-desc{color:#6b7280;font-size:11px;font-style:italic;line-height:1.45;}
+.item-price{color:#d4a853;font-size:15px;font-weight:700;font-family:'Playfair Display',Georgia,serif;white-space:nowrap;min-width:52px;text-align:right;padding-top:2px;flex-shrink:0;}
+.price-hf{text-align:right;min-width:72px;flex-shrink:0;}
+.price-hf-line{font-size:11px;line-height:1.9;color:#d4a853;}
+.price-hf-lbl{color:#4b5563;font-size:9px;}
+.badge{font-size:9px;font-weight:800;letter-spacing:.04em;padding:1px 5px;border-radius:3px;display:inline-block;font-family:'Courier New',monospace;vertical-align:middle;}
+.bG{background:rgba(120,53,15,.08);border:1px solid rgba(245,158,11,.4);color:#f59e0b;}
+.bL{background:rgba(30,58,95,.08);border:1px solid rgba(96,165,250,.4);color:#60a5fa;}
+.bH{background:rgba(20,83,45,.08);border:1px solid rgba(74,222,128,.4);color:#4ade80;}
+.bPe{background:rgba(12,74,110,.08);border:1px solid rgba(125,211,252,.4);color:#7dd3fc;}
+.bMa{background:rgba(49,40,129,.08);border:1px solid rgba(167,139,250,.4);color:#a78bfa;}
+.bCr{background:rgba(124,45,18,.08);border:1px solid rgba(251,146,60,.4);color:#fb923c;}
+.bM{background:rgba(127,29,29,.08);border:1px solid rgba(248,113,113,.4);color:#f87171;}
+.bF{background:rgba(120,53,15,.08);border:1px solid rgba(217,119,6,.4);color:#d97706;}
+.bSo{background:rgba(20,83,45,.08);border:1px solid rgba(134,239,172,.4);color:#86efac;}
+.promo-box{margin:8px -4px 4px;padding:10px 12px;background:linear-gradient(135deg,#292200,#1c1800);border:1px solid rgba(251,191,36,.27);border-radius:8px;}
+.promo-name{color:#fde68a;font-size:13.5px;font-weight:700;font-family:'Playfair Display',Georgia,serif;letter-spacing:.01em;}
+.promo-desc{color:#a3a35a;font-size:11px;font-style:italic;line-height:1.45;margin-top:3px;}
+.promo-price{color:#fbbf24;font-size:17px;font-weight:700;font-family:'Playfair Display',Georgia,serif;white-space:nowrap;flex-shrink:0;}
+.info-box{border-radius:9px;padding:10px 13px;margin-bottom:10px;display:flex;gap:10px;align-items:flex-start;}
+.info-box-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;color:#fff;margin-top:1px;}
+.info-box-text{font-size:11px;line-height:1.6;font-style:italic;}
+.notice-box{background:rgba(255,255,255,.04);border-radius:7px;padding:8px 12px;margin-bottom:6px;}
+.notice-text{color:#4b5563;font-size:11px;font-style:italic;line-height:1.5;}
+.chip{display:inline-flex;align-items:center;border-radius:5px;padding:4px 10px;font-size:9px;font-weight:800;letter-spacing:.12em;margin:0 4px 6px 0;}
+.wa-box{margin-top:13px;background:linear-gradient(135deg,#042f1a,#021a10);border:1px solid rgba(34,197,94,.27);border-radius:10px;padding:14px 16px;}
+.wa-title{color:#22c55e;font-size:10px;font-weight:800;letter-spacing:.2em;margin-bottom:6px;text-transform:uppercase;}
+.wa-text{color:#86efac;font-size:11px;font-style:italic;line-height:1.6;}
+.wa-btn{display:inline-flex;align-items:center;gap:8px;background:#22c55e;color:#fff;font-size:11px;font-weight:700;padding:9px 16px;border-radius:7px;text-decoration:none;letter-spacing:.05em;margin-top:10px;font-family:'Lato',Arial,sans-serif;}
+.wa-btn-icon{width:20px;height:20px;background:#1ea34b;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0;}
+.allergen-box{margin-top:34px;background:#0f0f0f;border:1px solid rgba(255,255,255,.055);border-radius:10px;padding:16px;}
+.allergen-title{color:#d4a853;font-size:10px;font-weight:800;letter-spacing:.2em;margin-bottom:12px;text-transform:uppercase;}
+.allergen-grid{display:flex;flex-wrap:wrap;gap:8px 14px;}
+.allergen-item{display:flex;align-items:center;gap:5px;}
+.allergen-lbl{color:#6b7280;font-size:11px;}
+.allergen-note{color:#374151;font-size:10px;margin-top:10px;font-style:italic;line-height:1.5;}
+.footer{text-align:center;margin-top:26px;padding-bottom:16px;}
+.footer-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,83,.33),transparent);width:60px;margin:0 auto 12px;}
+.footer-text{color:#374151;font-size:10px;line-height:1.7;}
+.footer-sub{color:#1f2937;font-size:10px;margin-top:5px;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="ring" style="top:-35px;left:-35px;width:170px;height:170px;border:1px solid rgba(212,168,83,.13);"></div>
+  <div class="ring" style="top:-23px;left:-23px;width:120px;height:120px;border:1px solid rgba(212,168,83,.08);"></div>
+  <div class="ring" style="bottom:-35px;right:-35px;width:170px;height:170px;border:1px solid rgba(212,168,83,.13);"></div>
+  <div class="ring" style="bottom:-23px;right:-23px;width:120px;height:120px;border:1px solid rgba(212,168,83,.08);"></div>
+  <div class="tagline">TAPAS &amp; FOOD</div>
+  <div class="bar-name">COME Y BEBA</div>
+  <div class="gold-line"></div>
+  <div class="address">
+    Travesia Dolores Ibarruri, 19<br/>
+    29531 Humilladero, Malaga<br/>
+    <a href="tel:+34603182396">Tel: 603 18 23 96</a>
+  </div>
+  <div class="lang-wrap">
+    <a class="lang-btn" href="index.html">ES Espanol</a>
+    <a class="lang-btn active" href="english.html">EN English</a>
+  </div>
+  <div class="wifi-card">
+    <div class="wifi-icon">W</div>
+    <div>
+      <div class="wifi-lbl">FREE WIFI</div>
+      <div class="wifi-row"><span class="wifi-key">Network: </span><span class="wifi-val">come y beba</span></div>
+      <div class="wifi-row"><span class="wifi-key">Password: </span><span class="wifi-val" style="letter-spacing:.12em;">87654321</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="menu-body">
+
+<!-- PAELLA -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-title-row">
+      <div class="sec-bullet" style="background:#fbbf24;"></div>
+      <div class="sec-title" style="color:#fbbf24;">Paella - Sundays Only</div>
+    </div>
+    <div class="sec-divider" style="background:linear-gradient(90deg,#fbbf24,rgba(251,191,36,.27),transparent);"></div>
+    <p class="sec-sub">Served at 14:00 - Until sold out</p>
+  </div>
+  <div class="info-box" style="background:linear-gradient(135deg,#292200,#1a1600);border:1px solid rgba(251,191,36,.27);">
+    <div class="info-box-icon" style="background:#fbbf2422;color:#fbbf24;border:1px solid rgba(251,191,36,.3);font-size:16px;">14h</div>
+    <p class="info-box-text" style="color:#fde68a;">Fresh paella cooked every Sunday. Served at 14:00. Booking recommended: 603 18 23 96</p>
+  </div>
+  <div class="item">
+    <div class="item-row">
+      <div class="item-left">
+        <div class="item-name-row"><span class="item-name">Seafood Paella</span><span class="badge bMa">Ma</span><span class="badge bCr">Cr</span></div>
+        <div class="item-desc">Saffron rice with mussels, prawns and squid - cooked fresh every Sunday</div>
+      </div>
+      <span class="item-price">7.00&euro;</span>
+    </div>
+  </div>
+</div>
+
+<!-- SHARING PLATES -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-title-row">
+      <div class="sec-bullet" style="background:#d4a853;"></div>
+      <div class="sec-title" style="color:#d4a853;">Sharing Plates</div>
+    </div>
+    <div class="sec-divider" style="background:linear-gradient(90deg,#d4a853,rgba(212,168,83,.27),transparent);"></div>
+    <p class="sec-sub">Available as half or full portion</p>
+  </div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">Crispy Chicken Strips</span><span class="badge bG">G</span><span class="badge bH">H</span></div>
+    <div class="item-desc">Tender chicken strips in crispy golden batter</div>
+  </div><div class="price-hf"><div class="price-hf-line"><span class="price-hf-lbl">Half </span><strong style="font-family:'Playfair Display',serif;">7.50&euro;</strong></div><div class="price-hf-line"><span class="price-hf-lbl">Full </span><strong style="font-family:'Playfair Display',serif;">11.00&euro;</strong></div></div></div></div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">Home-made Croquettes</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span></div>
+    <div class="item-desc">Creamy bechamel croquettes, house recipe</div>
+  </div><div class="price-hf"><div class="price-hf-line"><span class="price-hf-lbl">Half </span><strong style="font-family:'Playfair Display',serif;">7.50&euro;</strong></div><div class="price-hf-line"><span class="price-hf-lbl">Full </span><strong style="font-family:'Playfair Display',serif;">11.00&euro;</strong></div></div></div></div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">BBQ Chicken Wings</span><span class="badge bM">M</span></div>
+    <div class="item-desc">Slow-glazed wings in smoky BBQ sauce</div>
+  </div><div class="price-hf"><div class="price-hf-line"><span class="price-hf-lbl">Half </span><strong style="font-family:'Playfair Display',serif;">9.00&euro;</strong></div><div class="price-hf-line"><span class="price-hf-lbl">Full </span><strong style="font-family:'Playfair Display',serif;">12.50&euro;</strong></div></div></div></div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">Mini Pork Fillets</span></div>
+    <div class="item-desc">Pan-fried seasoned pork fillets, no breading</div>
+  </div><div class="price-hf"><div class="price-hf-line"><span class="price-hf-lbl">Half </span><strong style="font-family:'Playfair Display',serif;">7.50&euro;</strong></div><div class="price-hf-line"><span class="price-hf-lbl">Full </span><strong style="font-family:'Playfair Display',serif;">11.00&euro;</strong></div></div></div></div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">San Jacobo</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span></div>
+    <div class="item-desc">Breaded pork escalope stuffed with ham and melted cheese</div>
+  </div><span class="item-price">14.50&euro;</span></div></div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">Fried Squid Rings</span><span class="badge bG">G</span><span class="badge bH">H</span><span class="badge bMa">Ma</span></div>
+    <div class="item-desc">Golden battered squid rings with aioli</div>
+  </div><div class="price-hf"><div class="price-hf-line"><span class="price-hf-lbl">Half </span><strong style="font-family:'Playfair Display',serif;">9.50&euro;</strong></div><div class="price-hf-line"><span class="price-hf-lbl">Full </span><strong style="font-family:'Playfair Display',serif;">13.50&euro;</strong></div></div></div></div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">Fried Squid Tentacles</span><span class="badge bG">G</span><span class="badge bH">H</span><span class="badge bMa">Ma</span></div>
+    <div class="item-desc">Crispy squid tentacles, lightly seasoned</div>
+  </div><div class="price-hf"><div class="price-hf-line"><span class="price-hf-lbl">Half </span><strong style="font-family:'Playfair Display',serif;">9.50&euro;</strong></div><div class="price-hf-line"><span class="price-hf-lbl">Full </span><strong style="font-family:'Playfair Display',serif;">13.50&euro;</strong></div></div></div></div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">Marinated Dogfish</span><span class="badge bG">G</span><span class="badge bH">H</span><span class="badge bPe">Pe</span></div>
+    <div class="item-desc">Fried marinated shark fillet, Andalusian style</div>
+  </div><div class="price-hf"><div class="price-hf-line"><span class="price-hf-lbl">Half </span><strong style="font-family:'Playfair Display',serif;">8.50&euro;</strong></div><div class="price-hf-line"><span class="price-hf-lbl">Full </span><strong style="font-family:'Playfair Display',serif;">11.50&euro;</strong></div></div></div></div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">Deep-Fried Anchovies</span><span class="badge bG">G</span><span class="badge bH">H</span><span class="badge bPe">Pe</span></div>
+    <div class="item-desc">Fresh whole anchovies, crispy fried</div>
+  </div><div class="price-hf"><div class="price-hf-line"><span class="price-hf-lbl">Half </span><strong style="font-family:'Playfair Display',serif;">8.50&euro;</strong></div><div class="price-hf-line"><span class="price-hf-lbl">Full </span><strong style="font-family:'Playfair Display',serif;">11.50&euro;</strong></div></div></div></div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">Salchipapas</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span><span class="badge bSo">So</span></div>
+    <div class="item-desc">Fries, sausage, bacon, cheddar, mayo and ketchup</div>
+  </div><span class="item-price">10.00&euro;</span></div></div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">Loaded Bacon &amp; Cheddar Fries</span><span class="badge bL">L</span></div>
+    <div class="item-desc">Crispy fries topped with bacon and melted cheddar</div>
+  </div><span class="item-price">8.50&euro;</span></div></div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">Grilled Sirloin Skewers</span></div>
+    <div class="item-desc">Sirloin brochette, grilled to order</div>
+  </div><span class="item-price">14.00&euro;</span></div></div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">Iberian Secret Cut</span></div>
+    <div class="item-desc">Premium Iberian pork secret, grilled</div>
+  </div><span class="item-price">15.00&euro;</span></div></div>
+
+  <div class="item"><div class="item-row"><div class="item-left">
+    <div class="item-name-row"><span class="item-name">Mini Burger Bite</span><span class="badge bG">G</span></div>
+    <div class="item-desc">Small beef burger, great to share</div>
+  </div><span class="item-price">2.50&euro;</span></div></div>
+</div>
+
+<!-- VENEZUELA -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-title-row">
+      <div class="sec-bullet" style="background:#34d399;"></div>
+      <div class="sec-title" style="color:#34d399;">Flavours of Venezuela</div>
+    </div>
+    <div class="sec-divider" style="background:linear-gradient(90deg,#34d399,rgba(52,211,153,.27),transparent);"></div>
+    <p class="sec-sub">Authentic Venezuelan home recipes</p>
+  </div>
+  <div class="notice-box" style="border:1px solid rgba(52,211,153,.13);">
+    <p class="notice-text">Empanadas and arepas made with cornmeal - naturally gluten-free</p>
+  </div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Venezuelan Cheese Sticks (Tequenos)</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span></div><div class="item-desc">Crispy fried dough sticks filled with melted white cheese</div></div><span class="item-price">7.50&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Venezuelan Empanadas</span></div><div class="item-desc">Crispy cornmeal pastry with seasoned beef - naturally gluten-free</div></div><span class="item-price">4.50&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Arepas</span></div><div class="item-desc">Grilled cornmeal rounds - ask for today's filling</div></div><span class="item-price">4.50&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Fried Plantain (Patacones)</span></div><div class="item-desc">Twice-fried green plantain, crispy and golden</div></div><span class="item-price">8.50&euro;</span></div></div>
+</div>
+
+<!-- BURGERS -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-title-row"><div class="sec-bullet" style="background:#fb923c;"></div><div class="sec-title" style="color:#fb923c;">Burgers</div></div>
+    <div class="sec-divider" style="background:linear-gradient(90deg,#fb923c,rgba(251,146,60,.27),transparent);"></div>
+    <p class="sec-sub">All served with chips</p>
+  </div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Classic Burger</span><span class="badge bG">G</span><span class="badge bL">L</span></div><div class="item-desc">Iberian beef, lettuce, tomato, onion, ham and cheese</div></div><span class="item-price">7.50&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Special Burger</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span></div><div class="item-desc">Veal, red onion, lettuce, tomato, ham, cheese, bacon, fried egg and sauce</div></div><span class="item-price">8.00&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Mixed Burger</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span></div><div class="item-desc">Iberian beef and chicken, lettuce, tomato, onion, ham, cheese, bacon, egg and sauce</div></div><span class="item-price">9.50&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">The 4x4</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span><span class="badge bSo">So</span></div><div class="item-desc">Iberian beef, chicken, chorizo, tomato, onion, cheese, bacon, egg and sauce</div></div><span class="item-price">9.50&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Crispy Chicken Burger</span><span class="badge bG">G</span><span class="badge bL">L</span></div><div class="item-desc">Crispy fried chicken fillet, tomato, cheese and sauce</div></div><span class="item-price">7.00&euro;</span></div></div>
+</div>
+
+<!-- CAMPERO ROLLS -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-title-row"><div class="sec-bullet" style="background:#c084fc;"></div><div class="sec-title" style="color:#c084fc;">Campero Rolls</div></div>
+    <div class="sec-divider" style="background:linear-gradient(90deg,#c084fc,rgba(192,132,252,.27),transparent);"></div>
+    <p class="sec-sub">Hot sandwiches on toasted campero bread</p>
+  </div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Campero No. 1</span><span class="badge bG">G</span><span class="badge bL">L</span></div><div class="item-desc">Shredded chicken or pork, fried peppers, ham and cheese</div></div><span class="item-price">7.00&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Campero No. 2</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span></div><div class="item-desc">Chicken or pork, lettuce, tomato, mayo, ham and cheese</div></div><span class="item-price">7.00&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Campero No. 3</span><span class="badge bG">G</span></div><div class="item-desc">Chicken or pork, fried peppers and Serrano ham</div></div><span class="item-price">7.00&euro;</span></div></div>
+</div>
+
+<!-- FAST FOOD -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-title-row"><div class="sec-bullet" style="background:#60a5fa;"></div><div class="sec-title" style="color:#60a5fa;">Fast Food &amp; Salads</div></div>
+    <div class="sec-divider" style="background:linear-gradient(90deg,#60a5fa,rgba(96,165,250,.27),transparent);"></div>
+  </div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Classic Hot Dog</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bSo">So</span></div><div class="item-desc">Sausage, onion, chips, cheese and sauce in a soft roll</div></div><span class="item-price">5.00&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Special Hot Dog</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bSo">So</span></div><div class="item-desc">Sausage, salad, carrot, cabbage, chips, cheese, ham and shredded meat</div></div><span class="item-price">6.00&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Bocadillo &amp; Chips</span><span class="badge bG">G</span></div><div class="item-desc">Ask for today's filling, served with fries</div></div><span class="item-price">7.00&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Caesar Salad</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span></div><div class="item-desc">Romaine, grilled chicken, Parmesan, croutons and Caesar dressing</div></div><span class="item-price">12.00&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Mixed Green Salad</span></div><div class="item-desc">Fresh seasonal salad with house vinaigrette</div></div><span class="item-price">9.00&euro;</span></div></div>
+</div>
+
+<!-- CHURROS -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-title-row"><div class="sec-bullet" style="background:#f97316;"></div><div class="sec-title" style="color:#f97316;">Churros - Sat &amp; Sun Only</div></div>
+    <div class="sec-divider" style="background:linear-gradient(90deg,#f97316,rgba(249,115,22,.27),transparent);"></div>
+    <p class="sec-sub">Saturdays and Sundays only - Freshly fried to order</p>
+  </div>
+  <div class="info-box" style="background:linear-gradient(135deg,#431407,#1c0a00);border:1px solid rgba(249,115,22,.27);">
+    <div class="info-box-icon" style="background:rgba(249,115,22,.13);color:#f97316;border:1px solid rgba(249,115,22,.3);">S/D</div>
+    <p class="info-box-text" style="color:#fdba74;">"De puro churro" - Freshly fried to order. Saturdays and Sundays only - Bar Come y Beba</p>
+  </div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Churros (4 sticks)</span><span class="badge bG">G</span></div><div class="item-desc">Freshly fried churros, 4 sticks per portion</div></div><span class="item-price">1.50&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Hot Chocolate</span><span class="badge bL">L</span></div><div class="item-desc">Rich thick Spanish hot chocolate, perfect for dipping</div></div><span class="item-price">1.50&euro;</span></div></div>
+  <div class="promo-box">
+    <div class="item-row">
+      <div class="item-left">
+        <div class="item-name-row"><span class="promo-name">*** DEAL: Churros + Hot Chocolate ***</span><span class="badge bG">G</span><span class="badge bL">L</span></div>
+        <div class="promo-desc">4 churros + hot chocolate - the perfect combo</div>
+      </div>
+      <span class="promo-price">3.00&euro;</span>
+    </div>
+  </div>
+</div>
+
+<!-- ICE CREAM -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-title-row"><div class="sec-bullet" style="background:#a5f3fc;"></div><div class="sec-title" style="color:#a5f3fc;">Carte D'Or Ice Cream</div></div>
+    <div class="sec-divider" style="background:linear-gradient(90deg,#a5f3fc,rgba(165,243,252,.27),transparent);"></div>
+    <p class="sec-sub">Official Carte D'Or selection - Served in glass cup</p>
+  </div>
+  <div style="margin-bottom:8px;"><span class="chip" style="background:linear-gradient(135deg,#164e63,#0c4a6e);border:1px solid rgba(34,211,238,.27);color:#22d3ee;">OFFICIAL CARTE D'OR</span></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Single Scoop</span><span class="badge bL">L</span></div><div class="item-desc">One scoop of Carte D'Or - ask for today's flavour</div></div><span class="item-price">2.80&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Two Scoops</span><span class="badge bL">L</span></div><div class="item-desc">Two scoops of Carte D'Or, same or different flavours</div></div><span class="item-price">4.50&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Three Scoops</span><span class="badge bL">L</span></div><div class="item-desc">Three generous scoops of Carte D'Or</div></div><span class="item-price">6.00&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Ice Cream Sundae</span><span class="badge bG">G</span><span class="badge bL">L</span></div><div class="item-desc">2 scoops, whipped cream, chocolate syrup and wafer</div></div><span class="item-price">6.50&euro;</span></div></div>
+</div>
+
+<!-- DESSERTS -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-title-row"><div class="sec-bullet" style="background:#e879f9;"></div><div class="sec-title" style="color:#e879f9;">Desserts &amp; Cakes</div></div>
+    <div class="sec-divider" style="background:linear-gradient(90deg,#e879f9,rgba(232,121,249,.27),transparent);"></div>
+    <p class="sec-sub">Frigo 2026 cake selection - Artisan desserts</p>
+  </div>
+  <div style="margin-bottom:8px;">
+    <span class="chip" style="background:linear-gradient(135deg,#1a3a00,#0a200a);border:1px solid rgba(74,222,128,.33);color:#4ade80;">FRIGO 2026</span>
+    <span class="chip" style="background:linear-gradient(135deg,#1e1a00,#141100);border:1px solid rgba(251,191,36,.27);color:#fbbf24;">CARTE D'OR</span>
+  </div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Chocolate Lava Cake</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span></div><div class="item-desc">Molten dark chocolate centre, served with vanilla ice cream</div></div><span class="item-price">5.50&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Brownie &amp; Ice Cream</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span><span class="badge bF">F</span></div><div class="item-desc">Warm walnut brownie with vanilla Carte D'Or scoop</div></div><span class="item-price">6.00&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Chocolate Layer Cake</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span></div><div class="item-desc">Rich multilayer dark chocolate cake - Frigo 2026</div></div><span class="item-price">5.50&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Blueberry Cheesecake</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span></div><div class="item-desc">Creamy cheesecake with blueberry topping - Frigo 2026</div></div><span class="item-price">5.00&euro;</span></div></div>
+  <div class="item"><div class="item-row"><div class="item-left"><div class="item-name-row"><span class="item-name">Tiramisu Veneto</span><span class="badge bG">G</span><span class="badge bL">L</span><span class="badge bH">H</span></div><div class="item-desc">Classic layered Italian tiramisu - Frigo Veneto 2026</div></div><span class="item-price">5.50&euro;</span></div></div>
+
+  <div class="wa-box">
+    <div class="wa-title">WHOLE CAKES TO ORDER</div>
+    <p class="wa-text">Order your whole cake 48h in advance - Collect from the bar or ask about delivery</p>
+    <a class="wa-btn" href="https://wa.me/34603182396?text=Hello!%20I%20would%20like%20to%20order%20a%20whole%20cake%20with%2048h%20notice" target="_blank">
+      <div class="wa-btn-icon">W</div>
+      Order on WhatsApp - 603 18 23 96
+    </a>
+  </div>
+</div>
+
+<!-- ALLERGENS -->
+<div class="allergen-box">
+  <div class="allergen-title">ALLERGENS</div>
+  <div class="allergen-grid">
+    <div class="allergen-item"><span class="badge bG">G</span><span class="allergen-lbl">Gluten</span></div>
+    <div class="allergen-item"><span class="badge bL">L</span><span class="allergen-lbl">Dairy</span></div>
+    <div class="allergen-item"><span class="badge bH">H</span><span class="allergen-lbl">Egg</span></div>
+    <div class="allergen-item"><span class="badge bPe">Pe</span><span class="allergen-lbl">Fish</span></div>
+    <div class="allergen-item"><span class="badge bMa">Ma</span><span class="allergen-lbl">Molluscs</span></div>
+    <div class="allergen-item"><span class="badge bCr">Cr</span><span class="allergen-lbl">Crustaceans</span></div>
+    <div class="allergen-item"><span class="badge bM">M</span><span class="allergen-lbl">Mustard</span></div>
+    <div class="allergen-item"><span class="badge bF">F</span><span class="allergen-lbl">Tree nuts</span></div>
+    <div class="allergen-item"><span class="badge bSo">So</span><span class="allergen-lbl">Soya</span></div>
+  </div>
+  <p class="allergen-note">Allergen information is indicative. Cross-contamination may occur. Always consult our team for confirmation.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-divider"></div>
+  <p class="footer-text">Please inform our team of any allergy or dietary requirement - VAT included</p>
+  <p class="footer-sub">@comey_beba - Travesia Dolores Ibarruri 19 - 29531 Humilladero, Malaga</p>
+</div>
+
+</div><!-- end menu-body -->
+</body>
+</html>
